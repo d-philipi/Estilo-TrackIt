@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import axios from 'axios';
+import Cadastro from './PageCadastro/cadastro';
+import Habitos from './PageHabitos/habitos';
+import Historico from './PageHistorico/historico';
+import Hoje from './PageHoje/hoje';
+import Login from './PageLogin/login';
 
-function App() {
+
+export default function App() {
+  const [email, setEmail] = useState("");
+	const [senha, setSenha] = useState("");
+  const [nome, setNome] = useState("");
+	const [foto, setFoto] = useState("");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+			<Routes>
+        <Route 
+        path="/" 
+        element={<Login 
+        email={email} 
+        setEmail={setEmail} 
+        senha={senha} 
+        setSenha={setSenha}
+        />} />
+				<Route 
+        path="/cadastro" 
+        element={<Cadastro
+        email={email} 
+        setEmail={setEmail} 
+        senha={senha} 
+        setSenha={setSenha}
+        nome={nome}
+        setNome={setNome}
+        foto={foto}
+        setFoto={setFoto}
+        />} />
+        <Route path="/habitos" element={<Habitos/>} />
+        <Route path='/hoje' element={<Hoje/>}/>
+        <Route path='/historico' element={<Historico/>}/>
+			</Routes>
+		</BrowserRouter>
   );
 }
-
-export default App;

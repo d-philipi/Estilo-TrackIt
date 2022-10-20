@@ -37,8 +37,8 @@ export default function App() {
         foto={foto}
         setFoto={setFoto}
         />} />
-        <Route path="/habitos" element={<Habitos/>} />
         <Route path='/hoje' element={<Hoje/>}/>
+        <Route path="/habitos" element={<Habitos/>} />
         <Route path='/historico' element={<Historico/>}/>
 			</Routes>
 		</BrowserRouter>

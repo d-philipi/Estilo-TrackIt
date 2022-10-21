@@ -4,10 +4,11 @@ import axios from 'axios';
 
 import styled from 'styled-components';
 
-export default function Tarefa(){
+export default function Tarefa({tarefas}){
+
     return(
         <>
-            Tarefa
+            Tarefa 1
         </>
     )
 }

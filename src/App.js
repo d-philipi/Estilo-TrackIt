@@ -9,10 +9,12 @@ import Login from './PageLogin/login';
 
 
 export default function App() {
+
   const [email, setEmail] = useState("");
 	const [senha, setSenha] = useState("");
   const [nome, setNome] = useState("");
 	const [foto, setFoto] = useState("");
+  const [tarefas, setTarefas] = useState(null);
 
   return (
     <BrowserRouter>
@@ -37,9 +39,9 @@ export default function App() {
         foto={foto}
         setFoto={setFoto}
         />} />
-        <Route path='/hoje' element={<Hoje/>}/>
-        <Route path="/habitos" element={<Habitos/>} />
-        <Route path='/historico' element={<Historico/>}/>
+        <Route path='/hoje' element={<Hoje tarefas={tarefas} setTarefas={setTarefas}/>}/>
+        <Route path="/habitos" element={<Habitos tarefas={tarefas} setTarefas={setTarefas}/>} />
+        <Route path='/historico' element={<Historico />}/>
 			</Routes>
 		</BrowserRouter>
   );

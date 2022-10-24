@@ -15,6 +15,8 @@ export default function App() {
   const [nome, setNome] = useState("");
 	const [foto, setFoto] = useState("");
   const [tarefas, setTarefas] = useState(null);
+  const [tarefaInput, setTarefaInput] = useState("");
+  const [diasEscolhido, setDiasEscolhido] = useState([]);
 
   return (
     <BrowserRouter>
@@ -39,9 +41,23 @@ export default function App() {
         foto={foto}
         setFoto={setFoto}
         />} />
-        <Route path='/hoje' element={<Hoje tarefas={tarefas} setTarefas={setTarefas}/>}/>
-        <Route path="/habitos" element={<Habitos tarefas={tarefas} setTarefas={setTarefas}/>} />
-        <Route path='/historico' element={<Historico />}/>
+        <Route 
+        path='/hoje' 
+        element={<Hoje 
+        tarefas={tarefas} 
+        setTarefas={setTarefas}/>}/>
+        <Route 
+        path="/habitos" 
+        element={<Habitos 
+        tarefas={tarefas} 
+        setTarefas={setTarefas}
+        tarefaInput={tarefaInput}
+        setTarefaInput={setTarefaInput}
+        diasEscolhido={diasEscolhido}
+        setDiasEscolhido={setDiasEscolhido}/>} />
+        <Route 
+        path='/historico' 
+        element={<Historico />}/>
 			</Routes>
 		</BrowserRouter>
   );

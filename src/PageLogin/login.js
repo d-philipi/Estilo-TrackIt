@@ -1,15 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 
 import { Container, Logo, Form, Input, Botao, Criar } from '../styleds/styled';
+import MyContext from '../context/MyContext';
 
-export default function Login({email, setEmail, senha, setSenha}){
+export default function Login({email, setEmail, senha, setSenha, userToken, setUserToken}){
 
-    function fazerLogin(){
-        console.log("Fiz login!");
+    const {setUsuario} = useContext(MyContext);
+    const navigate = useNavigate();
+
+    function fazerLogin(e){
+        e.preventDefault();
+
+        const requisicao = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login",{
+            email: email,
+	        password: senha
+        })
+        requisicao.then(loginSucesso)
+        requisicao.catch(loginFalha)
     };
+
+    function loginSucesso(resposta){
+        setUsuario(resposta.data);
+        setUserToken(resposta.data.token)
+        navigate("/hoje");
+        setEmail("");
+        setSenha("");
+    }
+
+    function loginFalha(resposta){
+        alert("Falha no login!");
+        console.log(resposta.response);
+    }
 
     return (
         <Container>

@@ -45,6 +45,7 @@ export const Botao = styled.button`
     height: 45px;
     background: #52B6FF;
     border-radius: 4.63636px;
+    cursor: pointer;
 
     font-family: 'Lexend Deca', sans-serif;
     font-style: normal;
@@ -70,7 +71,7 @@ export const Criar = styled.p`
 export const Conteudo = styled.div`
     width: 100%;
     height: 800px;
-    padding: 75px 15px;
+    padding: 75px 15px 100px 15px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -130,7 +131,7 @@ export const Titulo = styled.div`
 export const Sidebar = styled.div`
     width: 100%;
     height: 70px;
-    position: absolute;    
+    position: fixed;    
     left: 0px;
     bottom: 0px;
     display: flex;
